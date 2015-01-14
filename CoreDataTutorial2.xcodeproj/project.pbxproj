@@ -10,6 +10,8 @@
 		552D5FAD1A66EF62007C49D1 /* FailedBankDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 552D5FA91A66EF62007C49D1 /* FailedBankDetails.m */; };
 		552D5FAE1A66EF62007C49D1 /* FailedBankCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 552D5FAA1A66EF62007C49D1 /* FailedBankCD.xcdatamodeld */; };
 		552D5FAF1A66EF62007C49D1 /* FailedBankInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 552D5FAC1A66EF62007C49D1 /* FailedBankInfo.m */; };
+		552D5FB11A66F86E007C49D1 /* Banks.json in Resources */ = {isa = PBXBuildFile; fileRef = 552D5FB01A66F86E007C49D1 /* Banks.json */; };
+		552D5FB31A66F9A5007C49D1 /* Banks.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 552D5FB01A66F86E007C49D1 /* Banks.json */; };
 		55B4FA921A66EDF2009ACBC5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4FA911A66EDF2009ACBC5 /* AppDelegate.m */; };
 		55B4FA941A66EDF2009ACBC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4FA931A66EDF2009ACBC5 /* main.m */; };
 		55B4FA991A66EDF2009ACBC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B4FA981A66EDF2009ACBC5 /* Images.xcassets */; };
@@ -27,12 +29,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		552D5FB21A66F98D007C49D1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				552D5FB31A66F9A5007C49D1 /* Banks.json in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		552D5FA71A66EF62007C49D1 /* FailedBankInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailedBankInfo.h; sourceTree = "<group>"; };
 		552D5FA81A66EF62007C49D1 /* FailedBankDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FailedBankDetails.h; sourceTree = "<group>"; };
 		552D5FA91A66EF62007C49D1 /* FailedBankDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailedBankDetails.m; sourceTree = "<group>"; };
 		552D5FAB1A66EF62007C49D1 /* FailedBankCD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FailedBankCD.xcdatamodel; sourceTree = "<group>"; };
 		552D5FAC1A66EF62007C49D1 /* FailedBankInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailedBankInfo.m; sourceTree = "<group>"; };
+		552D5FB01A66F86E007C49D1 /* Banks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Banks.json; sourceTree = "<group>"; };
 		55B4FA8B1A66EDF2009ACBC5 /* CoreDataTutorial2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataTutorial2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B4FA8F1A66EDF2009ACBC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55B4FA901A66EDF2009ACBC5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -91,6 +107,7 @@
 				552D5FAC1A66EF62007C49D1 /* FailedBankInfo.m */,
 				55B4FA901A66EDF2009ACBC5 /* AppDelegate.h */,
 				55B4FA911A66EDF2009ACBC5 /* AppDelegate.m */,
+				552D5FB01A66F86E007C49D1 /* Banks.json */,
 				55B4FA981A66EDF2009ACBC5 /* Images.xcassets */,
 				55B4FA9A1A66EDF2009ACBC5 /* MainMenu.xib */,
 				55B4FA8E1A66EDF2009ACBC5 /* Supporting Files */,
@@ -134,6 +151,7 @@
 				55B4FA871A66EDF2009ACBC5 /* Sources */,
 				55B4FA881A66EDF2009ACBC5 /* Frameworks */,
 				55B4FA891A66EDF2009ACBC5 /* Resources */,
+				552D5FB21A66F98D007C49D1 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -205,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55B4FA991A66EDF2009ACBC5 /* Images.xcassets in Resources */,
+				552D5FB11A66F86E007C49D1 /* Banks.json in Resources */,
 				55B4FA9C1A66EDF2009ACBC5 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

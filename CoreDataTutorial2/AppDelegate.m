@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "FailedBankDetails.h"
+#import "FailedBankInfo.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +21,47 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    NSManagedObjectContext *context = self.managedObjectContext;
+    
+    NSError *error = nil;
+    NSString* dataPath = [[NSBundle mainBundle] pathForResource:@"Banks" ofType:@"json"];
+    NSArray* banks = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath]
+                                                     options:kNilOptions
+                                                       error:&error];
+    NSLog(@"Imported Banks: %@", banks);
+    
+    [banks enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        FailedBankInfo *failedBankInfo = [NSEntityDescription
+                                          insertNewObjectForEntityForName:@"FailedBankInfo"
+                                          inManagedObjectContext:context];
+        failedBankInfo.name = [obj objectForKey:@"name"];
+        failedBankInfo.city = [obj objectForKey:@"city"];
+        failedBankInfo.state = [obj objectForKey:@"state"];
+        FailedBankDetails *failedBankDetails = [NSEntityDescription
+                                                insertNewObjectForEntityForName:@"FailedBankDetails"
+                                                inManagedObjectContext:context];
+        failedBankDetails.closeDate = [NSDate dateWithString:[obj objectForKey:@"closeDate"]];
+        failedBankDetails.updateDate = [NSDate date];
+        failedBankDetails.zip = [obj objectForKey:@"zip"];
+        failedBankDetails.info = failedBankInfo;
+        failedBankInfo.details = failedBankDetails;
+        NSError *error;
+        if (![context save:&error]) {
+            NSLog(@"Whoopsie, couldn't save %@", [error localizedDescription]);
+        }
+    }];
+    
+    // List them out to test
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"FailedBankInfo"
+                                              inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    for (FailedBankInfo *info in fetchedObjects) {
+        NSLog(@"Name: %@", info.name);
+        FailedBankDetails *details = info.details;
+        NSLog(@"Zip: %@", details.zip);
+    }
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -74,8 +117,8 @@
     
     if (!shouldFail && !error) {
         NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-        NSURL *url = [applicationDocumentsDirectory URLByAppendingPathComponent:@"OSXCoreDataObjC.storedata"];
-        if (![coordinator addPersistentStoreWithType:NSXMLStoreType configuration:nil URL:url options:nil error:&error]) {
+        NSURL *url = [applicationDocumentsDirectory URLByAppendingPathComponent:@"CoreDataTutorial2.sqlite"];
+        if (![coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:url options:nil error:&error]) {
             coordinator = nil;
         }
         _persistentStoreCoordinator = coordinator;
